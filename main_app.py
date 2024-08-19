@@ -23,7 +23,7 @@ def main():
     embeddings = OpenAIEmbeddings(model="text-embedding-ada-002")
     chroma_embedding_fn = ChromaEmbeddingFunction(embeddings)
     db = chromadb.PersistentClient(path="simple_langchain_chroma_db")
-    vector_store_from_client = Chroma(collection_name="my_collection", client=db, embedding_function=embeddings)
+    vector_store_from_client = Chroma(collection_name="reddit_collection", client=db, embedding_function=embeddings)
 
     retriever = vector_store_from_client.as_retriever(
         search_type="similarity",
